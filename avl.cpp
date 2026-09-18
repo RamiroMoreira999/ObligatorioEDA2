@@ -38,6 +38,28 @@ private:
     return n->height;
   }
 
+  void range(node *n, T desde, T hasta) {
+    if(n == nullptr) return;
+    if(n->data < desde){
+      range(n-> right,desde, hasta);
+    }else if(n->data > hasta){
+      range(n-> left, desde, hasta);
+    }else{
+      range(n-> left,desde, hasta);
+      cout<< n-> data;
+      range(n-> right, desde, hasta);
+    }
+  }
+
+  bool contains(node *n, T data){
+    if (n == nullptr) return false;
+    bool esta = false;
+    if(n-> data == data) esta = true;
+    if(n-> data < data)return contains(n-> right,data);
+    else if(n-> data > data)return contains(n-> left,data);
+    return esta;
+  }
+
   node *leftRotation(node *n) {
     //       z
     //     /   \
@@ -78,24 +100,24 @@ private:
   
     node *z = n;
     node *y = z->left;
-    node *y_l = y ->left;
+    node *y_r = y->right;  
 
-    z->right = z_r;
-    y->left = y_l;
+    z->left = y_r;
+    y->right = z;
 
     z->height = 1 + max(height(z->left), height(z->right));
     y->height = 1 + max(height(y->left), height(y->right));
 
-    return y;
+  return y;
   }
 
   node *rightLeftRotation(node *n) {
-  n->der= rightRotation(n->der);
+  n->right= rightRotation(n->right);
   return leftRotation(n);
   }
 
   node *leftRightRotation(node *n) { 
-    n->izq= leftRotation(n->izq);
+    n->left= leftRotation(n->left);
     return rightRotation(n);
    }
 
@@ -130,23 +152,23 @@ private:
   }
 
   node *add(node *n, T data) {
-    if (n == nullptr) {
-      return new node(data);
-    }
+  if (n == nullptr) {
+    return new node(data);
+  }
 
-    // else
-    if (data < n->data) {
-      n->left = add(n->left, data);
-    } else {
-      n->right = add(n->right, data);
-    }
-    n->height = 1 + max(height(n->left), height(n->right));
-
-    // si no esta balanceado, lo balanceamos
-    n = balance(n);
-
+  if (data < n->data) {
+    n->left = add(n->left, data);
+  } else if (n->data < data) {
+    n->right = add(n->right, data);
+  } else {
     return n;
   }
+
+  n->height = 1 + max(height(n->left), height(n->right));
+  n = balance(n);
+
+  return n;
+}
 
 public:
   avl() {}
@@ -156,4 +178,5 @@ public:
   virtual int size() override { return size(root); }
   virtual T max() override { assert(false); }
   virtual T min() override { assert(false); }
+  virtual void range(T desde, T hasta) override { range(root, desde, hasta); }
 };
