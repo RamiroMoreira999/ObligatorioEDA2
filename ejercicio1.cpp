@@ -11,8 +11,6 @@ avl<int> monedas;
 avl<string> pinturas;
 
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
 
   avl<int> monedas;
   avl<string> pinturas;
@@ -20,16 +18,20 @@ int main() {
   int n;
   cin >> n;
 
-  string operacion, letra;
+  string operacion;
+  string letra;
+
   for (int i = 0; i < n; i++) {
     cin >> operacion >> letra;
 
     if (operacion == "ALTA") {
       if (letra == "M") {
-        int c; cin >> c;
+        int c; 
+        cin >> c;
         monedas.add(c);
       } else {
-        string t; cin >> t;
+        string t; 
+        cin >> t;
         pinturas.add(t);
       }
     } else if (operacion == "BUSCAR") {
@@ -38,26 +40,32 @@ int main() {
         int c; cin >> c;
         encontrado = monedas.contains(c);
       } else {
-        string t; cin >> t;
+        string t; 
+        cin >> t;
         encontrado = pinturas.contains(t);
       }
-      cout << (encontrado ? "si" : "no") << "\n";
+      if (encontrado) cout << "si"; 
+      else cout << "no";
     } else { // RANGO
       if (letra == "M") {
-        int desde, hasta; cin >> desde >> hasta;
+        int desde; 
+        int hasta; 
+        cin >> desde >> hasta;
         lista<int> resultado;
         monedas.range(desde, hasta, resultado);
         resultado.iniciarRecorrido();
         while (resultado.haySiguiente()) {
-          cout << resultado.siguiente() << "\n";
+          cout << resultado.siguiente() << endl;
         }
       } else {
-        string desde, hasta; cin >> desde >> hasta;
+        string desde; 
+        string hasta; 
+        cin >> desde >> hasta;
         lista<string> resultado;
         pinturas.range(desde, hasta, resultado);
         resultado.iniciarRecorrido();
         while (resultado.haySiguiente()) {
-          cout << resultado.siguiente() << "\n";
+          cout << resultado.siguiente() << endl;
         }
       }
     }

@@ -16,3 +16,13 @@
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 1.
+
+## 09-09-2026 — Ramiro
+- Cree el repo e importe el script de avl del repo en aulas
+
+## 18-09-2026 — En conjunto 
+- Terminamos la clase arbol y todas las funciones necesesarias para hacer el ejercicio uno. Sin embargo, nos surgieron algunas dudas y le vamos a tener que preguntar al profe despues
+
+##            - Joaquin 
+- Termine el ejercicio1
+
