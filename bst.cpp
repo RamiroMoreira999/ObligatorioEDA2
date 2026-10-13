@@ -7,4 +7,6 @@ public:
   virtual int size() = 0;
   virtual T max() = 0;
   virtual T min() = 0;
+  virtual bool contains(T data) = 0;
+  virtual void range(T desde, T hasta, lista<T> &resultado) = 0;
 };

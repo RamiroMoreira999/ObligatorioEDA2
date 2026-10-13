@@ -1,5 +1,5 @@
 #pragma once
-
+#include "lista.cpp"
 #include "bst.cpp"
 #include <assert.h>
 
@@ -38,18 +38,18 @@ private:
     return n->height;
   }
 
-  void range(node *n, T desde, T hasta) {
-    if(n == nullptr) return;
-    if(n->data < desde){
-      range(n-> right,desde, hasta);
-    }else if(n->data > hasta){
-      range(n-> left, desde, hasta);
-    }else{
-      range(n-> left,desde, hasta);
-      cout<< n-> data;
-      range(n-> right, desde, hasta);
-    }
+  void range(node *n, T desde, T hasta, lista<T> &resultado) {
+  if (n == nullptr) return;
+  if (n->data < desde) {
+    range(n->right, desde, hasta, resultado);
+  } else if (n->data > hasta) {
+    range(n->left, desde, hasta, resultado);
+  } else {
+    range(n->left, desde, hasta, resultado);
+    resultado.agregarAlFinal(n->data);
+    range(n->right, desde, hasta, resultado);
   }
+}
 
   bool contains(node *n, T data){
     if (n == nullptr) return false;
@@ -172,11 +172,13 @@ private:
 
 public:
   avl() {}
-
+  virtual bool contains(T data) override { return contains(root, data); }
   virtual void add(T data) override { this->root = add(this->root, data); }
   virtual void remove(T data) override { assert(false); }
   virtual int size() override { return size(root); }
   virtual T max() override { assert(false); }
   virtual T min() override { assert(false); }
-  virtual void range(T desde, T hasta) override { range(root, desde, hasta); }
+  virtual void range(T desde, T hasta, lista<T> &resultado) override {
+    range(root, desde, hasta, resultado);
+  }
 };
