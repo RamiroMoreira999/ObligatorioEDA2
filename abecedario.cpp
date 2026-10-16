@@ -1,16 +1,14 @@
 #pragma once
 #include <string>
-#include "hash_func.cpp" 
-
-#pragma once
+#include "tads/hash_func.cpp"
 
 class hashAbc : public hashFunc<int*> {
 public:
     int hash(int* registro) override {
-        int cuento;
+        int cuento = 0;
 
         for (int i = 0; i < 26; i++) {
-            cuento= cuento * 31 + registro[i];
+            cuento = cuento * 31 + registro[i];
         }
 
         return cuento;
@@ -24,6 +22,3 @@ public:
       return ret;
     }
 };
-
-
-

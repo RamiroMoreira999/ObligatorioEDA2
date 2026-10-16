@@ -5,67 +5,67 @@
 #include "avl.cpp"
 #include "lista.cpp"
 
-using namespace std;
 
 avl<int> monedas;
-avl<string> pinturas;
+avl<std::string> pinturas;
 
 int main() {
 
   avl<int> monedas;
-  avl<string> pinturas;
+  avl<std::string> pinturas;
 
   int n;
-  cin >> n;
+  std::cin >> n;
 
-  string operacion;
-  string letra;
+  std::string operacion;
+  std::string letra;
 
   for (int i = 0; i < n; i++) {
-    cin >> operacion >> letra;
+    std::cin >> operacion >> letra;
 
     if (operacion == "ALTA") {
       if (letra == "M") {
         int c; 
-        cin >> c;
+        std::cin >> c;
         monedas.add(c);
       } else {
-        string t; 
-        cin >> t;
+        std::string t; 
+        std::cin >> t;
         pinturas.add(t);
       }
     } else if (operacion == "BUSCAR") {
       bool encontrado;
       if (letra == "M") {
-        int c; cin >> c;
+        int c; 
+        std::cin >> c;
         encontrado = monedas.contains(c);
       } else {
-        string t; 
-        cin >> t;
+        std::string t; 
+        std::cin >> t;
         encontrado = pinturas.contains(t);
       }
-      if (encontrado) cout << "si"; 
-      else cout << "no";
+      if (encontrado) std::cout << "si"; 
+      else std::cout << "no";
     } else { // RANGO
       if (letra == "M") {
         int desde; 
         int hasta; 
-        cin >> desde >> hasta;
+        std::cin >> desde >> hasta;
         lista<int> resultado;
         monedas.range(desde, hasta, resultado);
         resultado.iniciarRecorrido();
         while (resultado.haySiguiente()) {
-          cout << resultado.siguiente() << endl;
+          std::cout << resultado.siguiente() << std::endl;
         }
       } else {
-        string desde; 
-        string hasta; 
-        cin >> desde >> hasta;
-        lista<string> resultado;
+        std::string desde; 
+        std::string hasta; 
+        std::cin >> desde >> hasta;
+        lista<std::string> resultado;
         pinturas.range(desde, hasta, resultado);
         resultado.iniciarRecorrido();
         while (resultado.haySiguiente()) {
-          cout << resultado.siguiente() << endl;
+          std::cout << resultado.siguiente() << std::endl;
         }
       }
     }

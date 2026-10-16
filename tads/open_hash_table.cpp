@@ -46,6 +46,15 @@ private:
     return abs(this->h->hash(key)) % largoArray;
   }
 
+  // compara el CONTENIDO de dos claves (arrays de 26 enteros),
+  // no las direcciones de memoria (que es lo que haria un == directo con K=int*)
+  bool igualClaves(K a, K b) {
+    for (int i = 0; i < 26; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
+  }
+
 public:
   openHashTable(int capacidadEsperada, hashFunc<K> *h) {
     int tamañoDeseado = (int)(capacidadEsperada / 0.7);
@@ -59,7 +68,7 @@ public:
     int pos = posicion(key);
     nodo *actual = buckets[pos];
     while (actual != nullptr) {
-      if (actual->key == key) {
+      if (igualClaves(actual->key, key)) {
         actual->value = value;
         return;
       }
@@ -75,7 +84,7 @@ public:
     int pos = posicion(key);
     nodo *actual = buckets[pos];
     while (actual != nullptr) {
-      if (actual->key == key) return true;
+      if (igualClaves(actual->key, key)) return true;
       actual = actual->next;
     }
     return false;
@@ -85,7 +94,7 @@ public:
     int pos = posicion(key);
     nodo *actual = buckets[pos];
     while (actual != nullptr) {
-      if (actual->key == key) return actual->value;
+      if (igualClaves(actual->key, key)) return actual->value;
       actual = actual->next;
     }
     assert(false);
