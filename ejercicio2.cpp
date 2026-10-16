@@ -14,6 +14,10 @@ int main(){
     int cantReg;
     cin >> cantReg;
 
+    hashAbc h;
+    table<int*, int>* tablaReg = new openHashTable<int*, int>(cantReg, &h);
+
+
     for(int i=0;i<cantReg;i++){
         std::string registros;
         cin >> registros;
