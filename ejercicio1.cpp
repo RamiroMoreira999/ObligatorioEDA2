@@ -6,12 +6,9 @@
 #include "lista.cpp"
 
 
-avl<int> monedas;
-avl<std::string> pinturas;
-
 int main() {
 
-  avl<int> monedas;
+  avl<long long> monedas;
   avl<std::string> pinturas;
 
   int n;
@@ -25,7 +22,7 @@ int main() {
 
     if (operacion == "ALTA") {
       if (letra == "M") {
-        int c; 
+        long long c;
         std::cin >> c;
         monedas.add(c);
       } else {
@@ -36,7 +33,7 @@ int main() {
     } else if (operacion == "BUSCAR") {
       bool encontrado;
       if (letra == "M") {
-        int c; 
+        long long c;
         std::cin >> c;
         encontrado = monedas.contains(c);
       } else {
@@ -44,14 +41,14 @@ int main() {
         std::cin >> t;
         encontrado = pinturas.contains(t);
       }
-      if (encontrado) std::cout << "si"; 
-      else std::cout << "no";
+      if (encontrado) std::cout << "si" <<std::endl; 
+      else std::cout << "no" <<std::endl;
     } else { // RANGO
       if (letra == "M") {
-        int desde; 
-        int hasta; 
+        long long desde; 
+        long long hasta; 
         std::cin >> desde >> hasta;
-        lista<int> resultado;
+        lista<long long> resultado;
         monedas.range(desde, hasta, resultado);
         resultado.iniciarRecorrido();
         while (resultado.haySiguiente()) {
