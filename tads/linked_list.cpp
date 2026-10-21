@@ -5,28 +5,27 @@
 
 template <class T> class linkedList : public list<T> {
 private:
-  struct node{
+  struct node {
     T data;
-    node *next;
+    node* next;
 
-    node(T data){
-      this->data = data;
-    }
+    node(T data) : data(data), next(nullptr) {}
   };
 
-  class linkedListIterator: public iterator<T>{
+  class linkedListIterator : public iterator<T> {
   private:
     node* curr;
+
   public:
-    linkedListIterator(node* head){
+    linkedListIterator(node* head) {
       this->curr = head;
     }
 
-    virtual bool hasNext() override{
+    virtual bool hasNext() override {
       return this->curr != nullptr;
     }
 
-    virtual T next() override{
+    virtual T next() override {
       T elem = curr->data;
       curr = curr->next;
       return elem;
@@ -37,41 +36,45 @@ private:
   int count = 0;
 
 public:
-  linkedList(){}
+  linkedList() {}
 
   virtual iterator<T>* getIterator() override {
     return new linkedListIterator(this->head);
   }
 
-  virtual void add(T data) override{
+  virtual void add(T data) override {
+    node* nuevo = new node(data);
+    nuevo->next = this->head;
+    this->head = nuevo;
     count++;
-    if(this->head == nullptr){
-      this->head = new node(data);
-      return
-    }
-
-    node aux = this->head;
-    while(aux->next != nullptr){
-      aux = aux->next;
-    }
-    aux->next= new node(data);
   }
 
-  virtual int size() override{
+  virtual int size() override {
     return count;
   }
 
-  virtual T getPos(int p) override{
-    assert(false)
+  virtual T getPos(int p) override {
+    assert(p >= 0 && p < count);
+
+    node* aux = this->head;
+
+    for (int i = 0; i < p; i++) {
+        aux = aux->next;
+    }
+
+    return aux->data;
   }
-  virtual int findPos(T data) override{
-    assert(false)
+
+  virtual int findPos(T data) override {
+    assert(false);
+    return -1;
   }
-  virtual void remove(T data) override{
-    assert(false)
+
+  virtual void remove(T data) override {
+    assert(false);
   }
-  virtual void removePos(int pos) override{
-    assert(false)
+
+  virtual void removePos(int pos) override {
+    assert(false);
   }
-  // TODO: implementar lista
 };

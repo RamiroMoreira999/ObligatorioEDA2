@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "abecedario.cpp"
+#include "funciones/abecedario.cpp"
 #include "tads/tabla.cpp"
 #include "tads/open_hash_table.cpp"
 

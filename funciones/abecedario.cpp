@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "tads/hash_func.cpp"
+#include "hash_func.cpp"
 
 class hashAbc : public hashFunc<int*> {
 public:

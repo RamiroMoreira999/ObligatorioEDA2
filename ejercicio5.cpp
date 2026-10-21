@@ -2,10 +2,10 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "DisjoinSet.cpp"
-#include "list_graph.cpp"
-#include "graph.cpp"
-#include "min_heapSenderos.cpp"
+#include "tads/DisjoinSet.cpp"
+#include "tads/list_graph.cpp"
+#include "tads/graph.cpp"
+#include "tads/min_heapSenderos.cpp"
 
 int main(){
     int v;
@@ -25,7 +25,7 @@ int main(){
     }
 
     iterator<edge>* it = g->getAllEdges();
-    minHeapSenderos senderos = minHeapSenderos<edge>(e);
+    minHeapSenderos<edge> senderos(e);
     while (it->hasNext()) {
         edge a = it->next();
 

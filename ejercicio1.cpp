@@ -2,8 +2,8 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "avl.cpp"
-#include "lista.cpp"
+#include "tads/avl.cpp"
+#include "tads/lista.cpp"
 
 
 int main() {

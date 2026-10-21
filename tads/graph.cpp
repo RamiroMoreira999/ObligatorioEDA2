@@ -3,7 +3,16 @@
 #include "iterator.cpp"
 
 struct edge {
-  int from, to, weight;
+  int from;
+  int to; 
+  int weight;
+
+  edge() {
+    this->from = 0;
+    this->to = 0;
+    this->weight = 0;
+  }
+  
 
   edge(int from, int to, int weight) {
     this->from = from;

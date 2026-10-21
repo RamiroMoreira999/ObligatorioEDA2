@@ -17,8 +17,10 @@
 - Implementación íntegramente propia, sin fuentes externas.
 
 ## Ejercicio 4
-- Implementación íntegramente propia, sin fuentes externas.
-
+- Algoritmo de Kahn y TADs obtenidos del material del curso.
+- Minheap de clase adaptado para comparar módulos por prioridad y número. 
+- Usamos ChatGPT para resolver dudas de implementación y detectar errores.
 ## Ejercicio 5
-- Implementación íntegramente propia, sin fuentes externas.
-
+- Algoritmo de Kruskal, MFSet y TADs obtenidos del material del curso.
+- Minheap de clase adaptado para ordenar aristas por peso.
+- Usamos ChatGPT para resolver dudas de implementación y detectar errores.

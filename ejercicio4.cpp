@@ -2,10 +2,10 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "list_graph.cpp"
-#include "graph.cpp"
-#include "modulo.h"
-#include "min_heapModulos.cpp"
+#include "tads/list_graph.cpp"
+#include "tads/graph.cpp"
+#include "tads/modulo.h"
+#include "tads/min_heapModulos.cpp"
 
 
 int main(){
@@ -32,7 +32,7 @@ int main(){
         gradosDeEntrada[w]++;
     }
 
-    minHeapModulos cola = minHeapModulos<int>(v, modulos);
+    minHeapModulos<int> cola(v, modulos);
     int cont = 0;
     int* orden = new int[v+1];
 
@@ -68,11 +68,9 @@ int main(){
         std::cout << "imposible" << std::endl;
     } 
     else {
-        for (int i = 1; i <=cont; i++) {
-            if (i > 1) std::cout << " ";
-            std::cout << orden[i];
+        for (int i = 1; i <= cont; i++) {
+            std::cout << orden[i] << std::endl;
         }
-        std::cout << std::endl;
     }
 
     // TODO

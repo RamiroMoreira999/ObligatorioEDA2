@@ -23,7 +23,6 @@ public:
   }
 
   virtual void addEdge(int v, int w) override {
-    //
     addWeightedEdge(v, w, 1);
   }
 
@@ -34,16 +33,15 @@ public:
     assert(w <= this->vertices);
     assert(weight != 0);
 
-    edge newEdge = edge(v, w, weight);
-    listArr[v]->remove(newEdge);
-    listArr[v]->add(newEdge);
+    edge a = edge(v, w, weight);
+    listArr[v]->add(a);
 
     if (!this->isDirected) {
-      edge newEdge = edge(w, v, weight);
-      listArr[w]->remove(newEdge);
-      listArr[w]->add(newEdge);
+        edge reverseEdge = edge(w, v, weight);
+        listArr[w]->add(reverseEdge);
     }
   }
+
   virtual void removeEdge(int v, int w) override { assert(false); }
 
   virtual void removeAllEdges(int v) override { assert(false); }

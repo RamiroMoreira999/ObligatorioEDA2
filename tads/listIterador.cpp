@@ -1,3 +1,6 @@
+#pragma once
+#include "iterator.cpp"
+
 template <class T> class list: public iterable<T> {
 public:
   virtual void add(T data) = 0;

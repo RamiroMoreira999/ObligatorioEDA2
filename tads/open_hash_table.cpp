@@ -1,7 +1,7 @@
 #pragma once
 
 #include "tabla.cpp"
-#include "hash_func.cpp"
+#include "../funciones/hash_func.cpp"
 #include <assert.h>
 
 template <class K, class V> class openHashTable : public table<K, V> {

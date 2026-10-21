@@ -9,11 +9,15 @@ private:
   int count;
 
   void grow(int newlength) {
-    T *newArr = new T[newlength];
+    T* newArr = new T[newlength];
+
     for (int i = 0; i < this->arrLength; i++) {
-      newArr[i] = this->arr[i];
+        newArr[i] = this->arr[i];
     }
+
+    delete[] this->arr;
     this->arr = newArr;
+    this->arrLength = newlength;
   }
   
   bool esMenorPeso(T a, T b) {
@@ -71,7 +75,7 @@ public:
   }
 
   virtual void push(T elem) override {
-    if (this->count == this->arrLength) {
+    if (this->count == this->arrLength - 1) {
       grow(this->arrLength * 2);
     }
 
